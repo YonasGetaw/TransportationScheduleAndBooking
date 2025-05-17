@@ -1,0 +1,406 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WinnerGo - Book Transportation Across Ethiopia</title>
+    <link rel="stylesheet" href="../css/styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" />
+</head>
+<body>
+    <header class="header">
+        <div class="container">
+            <div class="logo">
+                <img src="../assets/images/logo.png" alt="WinnerGo Logo">
+                <h1>WinnerGo</h1>
+            </div>
+            <nav class="navbar">
+                <ul>
+                    <li><a href="#" class="active">Home</a></li>
+                    <li><a href="booking.html">Book Now</a></li>
+                    <li><a href="#">Schedules</a></li>
+                    <li><a href="#">Track Ride</a></li>
+                    <li><a href="#">About Us</a></li>
+                </ul>
+            </nav>
+            <div class="header-right">
+                <div class="language-switcher">
+                    <span class="current-lang">English</span>
+                    <div class="lang-dropdown">
+                        <a href="#" data-lang="am">Amharic</a>
+                        <a href="#" data-lang="en">English</a>
+                    </div>
+                </div>
+                <div class="auth-buttons">
+                    <a href="login.html" class="btn btn-outline">Login</a>
+                    <a href="signup.html" class="btn btn-primary">Operator Portal</a>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <!-- Hero Section -->
+        <section class="hero">
+            <div class="container">
+                <div class="hero-content">
+                    <h2>Your Winning Choice for Ethiopian Transport</h2>
+                    <p>Book buses, minibuses, and taxis across Ethiopia with local payment options including Telebirr, Amole, and CBE Birr.</p>
+                    <div class="hero-cta">
+                        <a href="booking.html" class="btn btn-primary btn-large">Book Now</a>
+                        <a href="#" class="btn btn-outline btn-large">View Schedules</a>
+                    </div>
+                </div>
+                <div class="hero-image">
+                    <img src="../assets/images/download (2).jfif" alt="Ethiopian transportation">
+                </div>
+            </div>
+        </section>
+
+        <!-- Quick Search Section -->
+        <section class="quick-search">
+            <div class="container">
+                <h2>Find Your Route</h2>
+                <form class="quick-search-form" id="quickSearchForm">
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="from">From</label>
+                            <select id="from" required>
+                                <option value="">Select departure city</option>
+                                <option value="addis-ababa">Addis Ababa</option>
+                                <option value="bahir-dar">Bahir Dar</option>
+                                <option value="hawassa">Hawassa</option>
+                                <option value="gondar">Gondar</option>
+                                <option value="mekele">Mekele</option>
+                                <option value="dire-dawa">Dire Dawa</option>
+                            </select>
+                        </div>
+                        <div class="swap-btn-container">
+                            <button type="button" class="swap-btn" title="Swap locations">
+                                <i class="fas fa-exchange-alt"></i>
+                            </button>
+                        </div>
+                        <div class="form-group">
+                            <label for="to">To</label>
+                            <select id="to" required>
+                                <option value="">Select destination city</option>
+                                <option value="addis-ababa">Addis Ababa</option>
+                                <option value="bahir-dar">Bahir Dar</option>
+                                <option value="hawassa">Hawassa</option>
+                                <option value="gondar">Gondar</option>
+                                <option value="mekele">Mekele</option>
+                                <option value="dire-dawa">Dire Dawa</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="date">Date</label>
+                            <input type="date" id="date" required>
+                        </div>
+                    </div>
+                    <button type="submit" class="btn btn-primary btn-large">Search Routes</button>
+                </form>
+            </div>
+        </section>
+
+        <!-- Live Schedule Section -->
+        <section class="live-schedule">
+            <div class="container">
+                <h2>Popular Routes & Schedules</h2>
+                <div class="schedule-tabs">
+                    <button class="tab-btn active" data-tab="today">Today</button>
+                    <button class="tab-btn" data-tab="tomorrow">Tomorrow</button>
+                    <button class="tab-btn" data-tab="weekend">Weekend</button>
+                </div>
+                <div class="schedule-content">
+                    <div class="tab-pane active" id="today">
+                        <div class="schedule-cards">
+                            <div class="schedule-card">
+                                <div class="route">Addis Ababa → Hawassa</div>
+                                <div class="departure">06:00 AM</div>
+                                <div class="duration">4h 30m</div>
+                                <div class="price">450 ETB</div>
+                                <div class="operator">Selam Bus</div>
+                                <button class="btn btn-small">Book Now</button>
+                            </div>
+                            <div class="schedule-card">
+                                <div class="route">Bahir Dar → Gondar</div>
+                                <div class="departure">07:30 AM</div>
+                                <div class="duration">2h 15m</div>
+                                <div class="price">320 ETB</div>
+                                <div class="operator">WinnerGo Express</div>
+                                <button class="btn btn-small">Book Now</button>
+                            </div>
+                            <div class="schedule-card">
+                                <div class="route">Addis Ababa → Adama</div>
+                                <div class="departure">Every 30 min</div>
+                                <div class="duration">1h 45m</div>
+                                <div class="price">180 ETB</div>
+                                <div class="operator">WinnerGo Shuttle</div>
+                                <button class="btn btn-small">Book Now</button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="tab-pane" id="tomorrow">
+                        <!-- Tomorrow's schedules would go here -->
+                    </div>
+                    <div class="tab-pane" id="weekend">
+                        <!-- Weekend schedules would go here -->
+                    </div>
+                </div>
+                <div class="view-all">
+                    <a href="#" class="btn btn-outline">View All Schedules</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Live Tracking Section -->
+        <section class="live-tracking">
+            <div class="container">
+                <div class="section-header">
+                    <h2>Real-Time Vehicle Tracking</h2>
+                    <a href="#" class="btn btn-outline">Track My Ride</a>
+                </div>
+                <div id="map" class="map-container"></div>
+                <div class="tracking-legend">
+                    <div class="legend-item">
+                        <span class="icon moving"></span>
+                        <span>Moving</span>
+                    </div>
+                    <div class="legend-item">
+                        <span class="icon stopped"></span>
+                        <span>Stopped</span>
+                    </div>
+                    <div class="legend-item">
+                        <span class="icon scheduled"></span>
+                        <span>Scheduled</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Features Section -->
+        <section class="features">
+            <div class="container">
+                <h2>Why Choose WinnerGo?</h2>
+                <div class="features-grid">
+                    <div class="feature-card">
+                        <div class="feature-icon payment"></div>
+                        <h3>Local Payment Options</h3>
+                        <p>Pay with Telebirr, Amole, CBE Birr, or cash at our partner locations.</p>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon schedule"></div>
+                        <h3>Real-Time Schedules</h3>
+                        <p>Get live updates on departure times and delays.</p>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon driver"></div>
+                        <h3>Verified Drivers</h3>
+                        <p>All our drivers are licensed and background-checked.</p>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon language"></div>
+                        <h3>Multi-Language Support</h3>
+                        <p>Use our service in English, Amharic, or Oromiffa.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Operators Section -->
+        <section class="operators">
+            <div class="container">
+                <h2>Our Trusted Partners</h2>
+                <div class="operator-logos">
+                    <img src="https://via.placeholder.com/150x80?text=WinnerGo+Express" alt="WinnerGo Express">
+                    <img src="https://via.placeholder.com/150x80?text=Selam+Bus" alt="Selam Bus">
+                    <img src="https://via.placeholder.com/150x80?text=ETT" alt="ETT">
+                    <img src="https://via.placeholder.com/150x80?text=Abay+Bus" alt="Abay Bus">
+                </div>
+            </div>
+        </section>
+
+        <!-- SMS Booking Section -->
+        <section class="sms-booking">
+            <div class="container">
+                <div class="sms-content">
+                    <div class="sms-text">
+                        <h3>No smartphone? No problem!</h3>
+                        <p>Book your ride via SMS. Text 'WINNER' to 8811 with your route and travel date.</p>
+                    </div>
+                    <div class="sms-image">
+                        <img src="https://images.unsplash.com/photo-1518133835878-5a93cc3f89e5?ixlib=rb-1.2.1&auto=format&fit=crop&w=300&q=80" alt="Mobile phone">
+                    </div>
+                </div>
+            </div>
+        </section>
+
+         <!-- Beautiful Feedback Section -->
+        <section class="feedback-section">
+        <div class="container">
+            <div class="section-header">
+            <h2 data-translate="Share Your Journey">Share Your Journey</h2>
+            <p class="section-subtitle" data-translate="We value your experience">We value your experience with WinnerGo</p>
+            </div>
+            
+            <div class="feedback-container">
+            <!-- Feedback Form -->
+            <div class="feedback-card form-card">
+                <h3 data-translate="Tell Us What You Think">Tell Us What You Think</h3>
+                <form id="feedbackForm" class="feedback-form">
+                <div class="form-row">
+                    <div class="form-group">
+                    <label for="feedbackName" data-translate="Your Name">Your Name</label>
+                    <input type="text" id="feedbackName" placeholder=" ">
+                    <div class="input-underline"></div>
+                    </div>
+                    <div class="form-group">
+                    <label for="feedbackEmail" data-translate="Email (Optional)">Email (Optional)</label>
+                    <input type="email" id="feedbackEmail" placeholder=" ">
+                    <div class="input-underline"></div>
+                    </div>
+                </div>
+                
+                <div class="form-group rating-group">
+                    <label data-translate="Your Rating">Your Rating</label>
+                    <div class="rating-stars">
+                    <input type="radio" id="star5" name="rating" value="5">
+                    <label for="star5" title="Excellent">★</label>
+                    <input type="radio" id="star4" name="rating" value="4">
+                    <label for="star4" title="Good">★</label>
+                    <input type="radio" id="star3" name="rating" value="3">
+                    <label for="star3" title="Average">★</label>
+                    <input type="radio" id="star2" name="rating" value="2">
+                    <label for="star2" title="Below Average">★</label>
+                    <input type="radio" id="star1" name="rating" value="1">
+                    <label for="star1" title="Poor">★</label>
+                    <div class="rating-text" id="ratingText">Tap to rate</div>
+                    </div>
+                </div>
+                
+                <div class="form-group">
+                    <label for="feedbackComment" data-translate="Your Experience">Your Experience</label>
+                    <textarea id="feedbackComment" rows="4" placeholder="How was your journey with WinnerGo?"></textarea>
+                    <div class="textarea-underline"></div>
+                </div>
+                
+                <button type="submit" class="btn btn-primary btn-submit">
+                    <span data-translate="Submit Feedback">Submit Feedback</span>
+                    <i class="fas fa-paper-plane"></i>
+                </button>
+                </form>
+            </div>
+            
+            <!-- Feedback Display -->
+            <div class="feedback-card testimonials-card">
+                <div class="testimonials-header">
+                <h3 data-translate="Recent Traveler Experiences">Recent Traveler Experiences</h3>
+                <div class="average-rating">
+                    <span data-translate="Average Rating">Average Rating</span>
+                    <div class="stars" id="averageRating">4.8</div>
+                </div>
+                </div>
+                
+                <div id="feedbackList" class="feedback-list">
+                <!-- Feedback items will be inserted here by JavaScript -->
+                </div>
+            </div>
+            </div>
+        </div>
+        </section>
+        <!-- Testimonials Section -->
+        <section class="testimonials">
+            <div class="container">
+                <h2>What Our Customers Say</h2>
+                <div class="testimonial-slider">
+                    <div class="testimonial">
+                        <div class="rating">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                        </div>
+                        <p>"WinnerGo saved me so much time! I booked my Addis to Hawassa trip in minutes using Telebirr payment."</p>
+                        <div class="author">
+                            <img src="https://randomuser.me/api/portraits/women/32.jpg" alt="Alemitu">
+                            <span>Alemitu, Addis Ababa</span>
+                        </div>
+                    </div>
+                    <div class="testimonial">
+                        <div class="rating">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                        </div>
+                        <p>"The real-time tracking let me know exactly when my family's bus would arrive in Bahir Dar."</p>
+                        <div class="author">
+                            <img src="https://randomuser.me/api/portraits/men/45.jpg" alt="Yohannes">
+                            <span>Yohannes, Bahir Dar</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Support Button -->
+        <div class="support-button">
+            <button class="btn btn-primary">
+                <i class="fas fa-headset"></i> Need Help?
+            </button>
+        </div>
+        
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-col">
+                    <h3>WinnerGo</h3>
+                    <p>Your winning choice for reliable transportation across Ethiopia.</p>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-facebook"></i></a>
+                        <a href="#"><i class="fab fa-telegram"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                    </div>
+                </div>
+                <div class="footer-col">
+                    <h3>Quick Links</h3>
+                    <ul>
+                        <li><a href="#">Home</a></li>
+                        <li><a href="booking.html">Book a Ride</a></li>
+                        <li><a href="#">Schedules</a></li>
+                        <li><a href="#">Track Ride</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h3>Company</h3>
+                    <ul>
+                        <li><a href="#">About Us</a></li>
+                        <li><a href="#">Privacy Policy</a></li>
+                        <li><a href="#">Become a Partner</a></li>
+                        <li><a href="#">Careers</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h3>Contact Us</h3>
+                    <ul>
+                        <li><i class="fas fa-map-marker-alt"></i> Bole Road, Addis Ababa</li>
+                        <li><i class="fas fa-phone"></i> +251 911 234 567</li>
+                        <li><i class="fas fa-envelope"></i> support@winnergo.com</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2023 WinnerGo. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"></script>
+    <script src="../js/main.js"></script>
+</body>
+</html>
