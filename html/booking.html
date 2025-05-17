@@ -3,94 +3,216 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title data-en="Book a Ticket - Transportation Booking" data-am="ትኬት ያስይዙ - የትራንስፖርት ማስያዝ">Book a Ticket - Transportation Booking</title>
-    <link rel="stylesheet" href="../css/styles.css">
-    <link rel="stylesheet" href="../css/booking.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <title>WinnerGo - Book Your Ride</title>
+    <link rel="stylesheet" href="../css/styles.css"> <link rel="stylesheet" href="../css/booking.css"> <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 </head>
 <body>
-    <header class="main-header">
-        <div class="header-content">
+    <header class="header">
+        <div class="container">
             <div class="logo">
-                <img src="../assets/images/logo.png" alt="Company Logo">
+                <img src="../assets/images/logo.png" alt="WinnerGo Logo">
+                <h1>WinnerGo</h1>
             </div>
-            <nav class="main-nav">
-                <ul class="nav-links">
-                    <li><a href="index.html" data-en="Home" data-am="መነሻ">Home</a></li>
-                    <li><a href="about.html" data-en="About Us" data-am="ስለ እኛ">About Us</a></li>
-                    <li><a href="contact.html" data-en="Contact" data-am="እውቂያ">Contact</a></li>
-                    <li><a href="login.html" data-en="Login" data-am="ግባ">Login</a></li>
+            <nav class="navbar">
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="#" class="active">Book Now</a></li>
+                    <li><a href="#">Schedules</a></li>
+                    <li><a href="#">Track Ride</a></li>
+                    <li><a href="#">About Us</a></li>
                 </ul>
             </nav>
-            <div class="language-toggle">
-                <span data-lang="en" class="lang-option active">🇬🇧 EN</span>
-                <span data-lang="am" class="lang-option">🇪🇹 AM</span>
-            </div>
-            <div class="hamburger-menu">
-                <i class="fas fa-bars"></i>
+            <div class="header-right">
+                <div class="language-switcher">
+                    <span class="current-lang">English</span>
+                    <div class="lang-dropdown">
+                        <a href="#" data-lang="am">Amharic</a>
+                        <a href="#" data-lang="en">English</a>
+                    </div>
+                </div>
+                <div class="auth-buttons">
+                    <a href="login.html" class="btn btn-outline">Login</a>
+                    <a href="signup.html" class="btn btn-primary">Operator Portal</a>
+                </div>
             </div>
         </div>
-        <aside class="sidebar-menu">
-            <ul class="sidebar-links">
-                <li><a href="index.html" data-en="Home" data-am="መነሻ">Home</a></li>
-                <li><a href="about.html" data-en="About Us" data-am="ስለ እኛ">About Us</a></li>
-                <li><a href="contact.html" data-en="Contact" data-am="እውቂያ">Contact</a></li>
-                <li><a href="login.html" data-en="Login" data-am="ግባ">Login</a></li>
-            </ul>
-        </aside>
     </header>
 
     <main class="booking-main">
-        <section class="booking-section">
-            <h1 data-en="Book a Ticket" data-am="ትኬት ያስይዙ">Book a Ticket</h1>
-            <form class="booking-form" id="bookingForm">
-                <div class="form-group">
-                    <label for="firstName" data-en="First Name:" data-am="ስም:">First Name:</label>
-                    <input type="text" id="firstName" name="firstName" required>
+        <div class="container">
+            <div class="booking-flow">
+                <div class="booking-header">
+                    <a href="index.html" class="back-button"><i class="fas fa-arrow-left"></i> Back to Home</a>
+                    <h2>Book Your Transportation</h2>
                 </div>
-                <div class="form-group">
-                    <label for="lastName" data-en="Last Name:" data-am="የአባት ስም:">Last Name:</label>
-                    <input type="text" id="lastName" name="lastName" required>
-                </div>
-                <div class="form-group">
-                    <label for="phoneNumber" data-en="Phone Number:" data-am="ስልክ ቁጥር:">Phone Number:</label>
-                    <input type="tel" id="phoneNumber" name="phoneNumber" required>
-                </div>
-                <div class="form-group">
-                    <label for="startingPoint" data-en="Starting Point:" data-am="መነሻ:">Starting Point:</label>
-                    <input type="text" id="startingPoint" name="startingPoint" required>
-                </div>
-                <div class="form-group">
-                    <label for="destination" data-en="Destination:" data-am="መድረሻ:">Destination:</label>
-                    <input type="text" id="destination" name="destination" required>
-                </div>
-                <div class="form-group">
-                    <label for="vehicleType" data-en="Vehicle Type:" data-am="የተሽከርካሪ ዓይነት:">Vehicle Type:</label>
-                    <select id="vehicleType" name="vehicleType" required>
-                        <option value="" data-en="Select Vehicle" data-am="ተሽከርካሪ ይምረጡ">Select Vehicle</option>
-                        <option value="economy" data-en="Economy" data-am="ኢኮኖሚ">Economy</option>
-                        <option value="minibus" data-en="Minibus" data-am="ሚኒባስ">Minibus</option>
-                        <option value="coaster" data-en="Coaster" data-am="ኮስተር">Coaster</option>
-                        <option value="luxury" data-en="Luxury" data-am="ቅንጦት">Luxury</option>
-                    </select>
-                </div>
-                <div class="form-group">
-                    <label for="numberOfSeats" data-en="Number of Seats:" data-am="የወንበሮች ብዛት:">Number of Seats:</label>
-                    <input type="number" id="numberOfSeats" name="numberOfSeats" min="1" value="1" required>
-                </div>
-                <div class="form-group">
-                    <label for="price" data-en="Total Price:" data-am="ጠቅላላ ዋጋ:">Total Price:</label>
-                    <input type="text" id="price" name="price" value="$0.00" readonly>
-                </div>
-                <button type="submit" class="btn-primary" data-en="Book Now" data-am="አሁን ያስይዙ">Book Now</button>
-            </form>
-        </section>
+
+                <form id="bookingForm" class="booking-form">
+                    <section class="booking-section active" id="step1">
+                        <h3>1. Select Route & Date</h3>
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="bookingFrom">Departure City</label>
+                                <select id="bookingFrom" required>
+                                    <option value="">Select departure city</option>
+                                    <option value="addis-ababa">Addis Ababa</option>
+                                    <option value="bahir-dar">Bahir Dar</option>
+                                    <option value="hawassa">Hawassa</option>
+                                    <option value="gondar">Gondar</option>
+                                    <option value="mekele">Mekele</option>
+                                    <option value="dire-dawa">Dire Dawa</option>
+                                </select>
+                            </div>
+                            <div class="swap-btn-container">
+                                <button type="button" class="swap-btn" title="Swap locations">
+                                    <i class="fas fa-exchange-alt"></i>
+                                </button>
+                            </div>
+                            <div class="form-group">
+                                <label for="bookingTo">Destination City</label>
+                                <select id="bookingTo" required>
+                                    <option value="">Select destination city</option>
+                                    <option value="addis-ababa">Addis Ababa</option>
+                                    <option value="bahir-dar">Bahir Dar</option>
+                                    <option value="hawassa">Hawassa</option>
+                                    <option value="gondar">Gondar</option>
+                                    <option value="mekele">Mekele</option>
+                                    <option value="dire-dawa">Dire Dawa</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="bookingDate">Travel Date</label>
+                            <input type="date" id="bookingDate" required>
+                        </div>
+                        <button type="button" class="btn btn-primary next-step" data-step="2">Next: Find Routes</button>
+                    </section>
+
+                    <section class="booking-section" id="step2">
+                        <h3>2. Choose Your Ride</h3>
+                        <div id="availableRoutes" class="schedule-cards">
+                            <p class="no-routes-message">No routes found for your selection. Please adjust your search.</p>
+                        </div>
+                        <div class="booking-navigation">
+                            <button type="button" class="btn btn-outline prev-step" data-step="1">Back</button>
+                            <button type="button" class="btn btn-primary next-step" data-step="3" disabled id="selectRouteBtn">Next: Passenger Details</button>
+                        </div>
+                    </section>
+
+                    <section class="booking-section" id="step3">
+                        <h3>3. Passenger Details</h3>
+                        <div class="form-group">
+                            <label for="numPassengers">Number of Passengers</label>
+                            <input type="number" id="numPassengers" value="1" min="1" max="10" required>
+                        </div>
+                        <div id="passengerDetailsInputs">
+                            </div>
+                        <div class="booking-navigation">
+                            <button type="button" class="btn btn-outline prev-step" data-step="2">Back</button>
+                            <button type="button" class="btn btn-primary next-step" data-step="4">Next: Payment</button>
+                        </div>
+                    </section>
+
+                    <section class="booking-section" id="step4">
+                        <h3>4. Payment Method</h3>
+                        <div class="payment-options">
+                            <label class="payment-card">
+                                <input type="radio" name="paymentMethod" value="telebirr" required>
+                                <img src="../assets/images/telebirr.png" alt="Telebirr">
+                                <span>Telebirr</span>
+                            </label>
+                            <label class="payment-card">
+                                <input type="radio" name="paymentMethod" value="amole">
+                                <img src="../assets/images/amole.png" alt="Amole">
+                                <span>Amole</span>
+                            </label>
+                            <label class="payment-card">
+                                <input type="radio" name="paymentMethod" value="cbebirr">
+                                <img src="../assets/images/cbebirr.png" alt="CBE Birr">
+                                <span>CBE Birr</span>
+                            </label>
+                            <label class="payment-card">
+                                <input type="radio" name="paymentMethod" value="cash">
+                                <img src="../assets/images/cash.png" alt="Cash">
+                                <span>Cash at Partner</span>
+                            </label>
+                        </div>
+                        <div class="booking-summary">
+                            <h4>Order Summary</h4>
+                            <p>Route: <span id="summaryRoute"></span></p>
+                            <p>Date: <span id="summaryDate"></span></p>
+                            <p>Departure: <span id="summaryDeparture"></span></p>
+                            <p>Passengers: <span id="summaryPassengers"></span></p>
+                            <p class="total-price">Total: <span id="summaryTotal">0 ETB</span></p>
+                        </div>
+                        <div class="booking-navigation">
+                            <button type="button" class="btn btn-outline prev-step" data-step="3">Back</button>
+                            <button type="submit" class="btn btn-primary">Confirm Booking</button>
+                        </div>
+                    </section>
+
+                    <section class="booking-section" id="step5">
+                        <div class="confirmation-message">
+                            <i class="fas fa-check-circle success-icon"></i>
+                            <h3>Booking Confirmed!</h3>
+                            <p>Your ride has been successfully booked. A confirmation SMS and email with your ticket details will be sent shortly.</p>
+                            <div class="booking-details-summary">
+                                <p><strong>Booking ID:</strong> <span id="confirmedBookingId"></span></p>
+                                <p><strong>Route:</strong> <span id="confirmedRoute"></span></p>
+                                <p><strong>Date:</strong> <span id="confirmedDate"></span></p>
+                                <p><strong>Departure:</strong> <span id="confirmedDeparture"></span></p>
+                                <p><strong>Total Paid:</strong> <span id="confirmedTotal"></span></p>
+                            </div>
+                            <a href="index.html" class="btn btn-primary btn-large">Back to Home</a>
+                            <a href="#" class="btn btn-outline btn-large">Track My Ride</a>
+                        </div>
+                    </section>
+                </form>
+            </div>
+        </div>
     </main>
 
-    <footer class="main-footer">
-        <div class="footer-content">
-            <p>&copy; <span id="current-year"></span> Transportation Booking System. All rights reserved.</p>
-            <p data-en="Developed by Yoni Tall, Melu, & Co." data-am="በዮኒ ታል፣ መሉ እና ሌሎች የተሰራ">Developed by Yoni Tall, Melu, & Co.</p>
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-col">
+                    <h3>WinnerGo</h3>
+                    <p>Your winning choice for reliable transportation across Ethiopia.</p>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-facebook"></i></a>
+                        <a href="#"><i class="fab fa-telegram"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                    </div>
+                </div>
+                <div class="footer-col">
+                    <h3>Quick Links</h3>
+                    <ul>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="#">Book a Ride</a></li>
+                        <li><a href="#">Schedules</a></li>
+                        <li><a href="#">Track Ride</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h3>Company</h3>
+                    <ul>
+                        <li><a href="#">About Us</a></li>
+                        <li><a href="#">Privacy Policy</a></li>
+                        <li><a href="#">Become a Partner</a></li>
+                        <li><a href="#">Careers</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h3>Contact Us</h3>
+                    <ul>
+                        <li><i class="fas fa-map-marker-alt"></i> Bole Road, Addis Ababa</li>
+                        <li><i class="fas fa-phone"></i> +251 911 234 567</li>
+                        <li><i class="fas fa-envelope"></i> support@winnergo.com</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 WinnerGo. All rights reserved.</p>
+            </div>
         </div>
     </footer>
 
