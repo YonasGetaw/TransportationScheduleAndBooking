@@ -14,6 +14,7 @@ document.addEventListener('DOMContentLoaded', function() {
     initDatePickers();
     initBookingButtons();
     initFeedbackSystem();
+    initHelpButton();
 });
 
 /**
@@ -499,4 +500,37 @@ function initFeedbackSystem() {
             day: 'numeric' 
         });
     }
+}
+
+function initHelpButton() {
+  const helpButton = document.querySelector('.help-btn');
+  const helpBox = document.querySelector('.help-box');
+  const closeButton = document.querySelector('.close-help');
+
+  if (!helpButton || !helpBox) return;
+
+  // Toggle help box
+  helpButton.addEventListener('click', function(e) {
+    e.stopPropagation();
+    helpBox.classList.toggle('active');
+  });
+
+  // Close help box
+  closeButton.addEventListener('click', function() {
+    helpBox.classList.remove('active');
+  });
+
+  // Close when clicking outside
+  document.addEventListener('click', function(e) {
+    if (!helpBox.contains(e.target) && e.target !== helpButton) {
+      helpBox.classList.remove('active');
+    }
+  });
+
+  // Close on Esc key
+  document.addEventListener('keydown', function(e) {
+    if (e.key === 'Escape') {
+      helpBox.classList.remove('active');
+    }
+  });
 }
