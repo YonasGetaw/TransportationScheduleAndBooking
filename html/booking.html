@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title data-en="Book a Ticket - Transportation Booking" data-am="ትኬት ያስይዙ - የትራንስፖርት ማስያዝ">Book a Ticket - Transportation Booking</title>
+    <link rel="stylesheet" href="../css/styles.css">
+    <link rel="stylesheet" href="../css/booking.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+    <header class="main-header">
+        <div class="header-content">
+            <div class="logo">
+                <img src="../assets/images/logo.png" alt="Company Logo">
+            </div>
+            <nav class="main-nav">
+                <ul class="nav-links">
+                    <li><a href="index.html" data-en="Home" data-am="መነሻ">Home</a></li>
+                    <li><a href="about.html" data-en="About Us" data-am="ስለ እኛ">About Us</a></li>
+                    <li><a href="contact.html" data-en="Contact" data-am="እውቂያ">Contact</a></li>
+                    <li><a href="login.html" data-en="Login" data-am="ግባ">Login</a></li>
+                </ul>
+            </nav>
+            <div class="language-toggle">
+                <span data-lang="en" class="lang-option active">🇬🇧 EN</span>
+                <span data-lang="am" class="lang-option">🇪🇹 AM</span>
+            </div>
+            <div class="hamburger-menu">
+                <i class="fas fa-bars"></i>
+            </div>
+        </div>
+        <aside class="sidebar-menu">
+            <ul class="sidebar-links">
+                <li><a href="index.html" data-en="Home" data-am="መነሻ">Home</a></li>
+                <li><a href="about.html" data-en="About Us" data-am="ስለ እኛ">About Us</a></li>
+                <li><a href="contact.html" data-en="Contact" data-am="እውቂያ">Contact</a></li>
+                <li><a href="login.html" data-en="Login" data-am="ግባ">Login</a></li>
+            </ul>
+        </aside>
+    </header>
+
+    <main class="booking-main">
+        <section class="booking-section">
+            <h1 data-en="Book a Ticket" data-am="ትኬት ያስይዙ">Book a Ticket</h1>
+            <form class="booking-form" id="bookingForm">
+                <div class="form-group">
+                    <label for="firstName" data-en="First Name:" data-am="ስም:">First Name:</label>
+                    <input type="text" id="firstName" name="firstName" required>
+                </div>
+                <div class="form-group">
+                    <label for="lastName" data-en="Last Name:" data-am="የአባት ስም:">Last Name:</label>
+                    <input type="text" id="lastName" name="lastName" required>
+                </div>
+                <div class="form-group">
+                    <label for="phoneNumber" data-en="Phone Number:" data-am="ስልክ ቁጥር:">Phone Number:</label>
+                    <input type="tel" id="phoneNumber" name="phoneNumber" required>
+                </div>
+                <div class="form-group">
+                    <label for="startingPoint" data-en="Starting Point:" data-am="መነሻ:">Starting Point:</label>
+                    <input type="text" id="startingPoint" name="startingPoint" required>
+                </div>
+                <div class="form-group">
+                    <label for="destination" data-en="Destination:" data-am="መድረሻ:">Destination:</label>
+                    <input type="text" id="destination" name="destination" required>
+                </div>
+                <div class="form-group">
+                    <label for="vehicleType" data-en="Vehicle Type:" data-am="የተሽከርካሪ ዓይነት:">Vehicle Type:</label>
+                    <select id="vehicleType" name="vehicleType" required>
+                        <option value="" data-en="Select Vehicle" data-am="ተሽከርካሪ ይምረጡ">Select Vehicle</option>
+                        <option value="economy" data-en="Economy" data-am="ኢኮኖሚ">Economy</option>
+                        <option value="minibus" data-en="Minibus" data-am="ሚኒባስ">Minibus</option>
+                        <option value="coaster" data-en="Coaster" data-am="ኮስተር">Coaster</option>
+                        <option value="luxury" data-en="Luxury" data-am="ቅንጦት">Luxury</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="numberOfSeats" data-en="Number of Seats:" data-am="የወንበሮች ብዛት:">Number of Seats:</label>
+                    <input type="number" id="numberOfSeats" name="numberOfSeats" min="1" value="1" required>
+                </div>
+                <div class="form-group">
+                    <label for="price" data-en="Total Price:" data-am="ጠቅላላ ዋጋ:">Total Price:</label>
+                    <input type="text" id="price" name="price" value="$0.00" readonly>
+                </div>
+                <button type="submit" class="btn-primary" data-en="Book Now" data-am="አሁን ያስይዙ">Book Now</button>
+            </form>
+        </section>
+    </main>
+
+    <footer class="main-footer">
+        <div class="footer-content">
+            <p>&copy; <span id="current-year"></span> Transportation Booking System. All rights reserved.</p>
+            <p data-en="Developed by Yoni Tall, Melu, & Co." data-am="በዮኒ ታል፣ መሉ እና ሌሎች የተሰራ">Developed by Yoni Tall, Melu, & Co.</p>
+        </div>
+    </footer>
+
+    <script src="../js/main.js"></script>
+    <script src="../js/booking.js"></script>
+</body>
+</html>
