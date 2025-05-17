@@ -11,17 +11,17 @@
 <body>
     <header class="header">
         <div class="container">
+            <!-- Update the logo section in your header -->
             <div class="logo">
-                <img src="../assets/images/logo.png" alt="WinnerGo Logo">
-                <h1>WinnerGo</h1>
+                <img src="../assets/images/logo img.png" alt="WinnerGo - Ethiopian Transportation Service" title="WinnerGo">
             </div>
             <nav class="navbar">
                 <ul>
                     <li><a href="#" class="active">Home</a></li>
                     <li><a href="booking.html">Book Now</a></li>
-                    <li><a href="#">Schedules</a></li>
-                    <li><a href="#">Track Ride</a></li>
-                    <li><a href="#">About Us</a></li>
+                    <li><a href="#schedule">Schedules</a></li>
+                    <li><a href="#tracking">Track Ride</a></li>
+                    <li><a href="about.html">About Us</a></li>
                 </ul>
             </nav>
             <div class="header-right">
@@ -58,53 +58,134 @@
             </div>
         </section>
 
-        <!-- Quick Search Section -->
-        <section class="quick-search">
-            <div class="container">
-                <h2>Find Your Route</h2>
-                <form class="quick-search-form" id="quickSearchForm">
-                    <div class="form-row">
-                        <div class="form-group">
-                            <label for="from">From</label>
-                            <select id="from" required>
-                                <option value="">Select departure city</option>
-                                <option value="addis-ababa">Addis Ababa</option>
-                                <option value="bahir-dar">Bahir Dar</option>
-                                <option value="hawassa">Hawassa</option>
-                                <option value="gondar">Gondar</option>
-                                <option value="mekele">Mekele</option>
-                                <option value="dire-dawa">Dire Dawa</option>
-                            </select>
-                        </div>
-                        <div class="swap-btn-container">
-                            <button type="button" class="swap-btn" title="Swap locations">
-                                <i class="fas fa-exchange-alt"></i>
-                            </button>
-                        </div>
-                        <div class="form-group">
-                            <label for="to">To</label>
-                            <select id="to" required>
-                                <option value="">Select destination city</option>
-                                <option value="addis-ababa">Addis Ababa</option>
-                                <option value="bahir-dar">Bahir Dar</option>
-                                <option value="hawassa">Hawassa</option>
-                                <option value="gondar">Gondar</option>
-                                <option value="mekele">Mekele</option>
-                                <option value="dire-dawa">Dire Dawa</option>
-                            </select>
-                        </div>
-                        <div class="form-group">
-                            <label for="date">Date</label>
-                            <input type="date" id="date" required>
-                        </div>
-                    </div>
-                    <button type="submit" class="btn btn-primary btn-large">Search Routes</button>
-                </form>
+        <!-- Beautiful Booking Form Section -->
+        <section class="booking-section">
+        <div class="container">
+            <div class="booking-card">
+            <div class="booking-header">
+                <h2>Plan Your Perfect Journey</h2>
+                <p>Select your route, vehicle, and travel details</p>
             </div>
+            
+            <form class="booking-form" id="tripForm">
+                <!-- Route Selection -->
+                <div class="form-section">
+                <div class="section-header">
+                    <i class="fas fa-route"></i>
+                    <h3>Route Details</h3>
+                </div>
+                <div class="form-grid">
+                    <div class="form-group animated-input">
+                    <select id="from" required>
+                        <option value=""></option>
+                        <option value="addis-ababa">Addis Ababa</option>
+                        <option value="bahir-dar">Bahir Dar</option>
+                        <option value="hawassa">Hawassa</option>
+                    </select>
+                    <label for="from"><i class="fas fa-map-marker-alt"></i> Departure City</label>
+                    </div>
+                    
+                    <button type="button" class="swap-btn" aria-label="Swap locations">
+                    <i class="fas fa-exchange-alt"></i>
+                    </button>
+                    
+                    <div class="form-group animated-input">
+                    <select id="to" required>
+                        <option value=""></option>
+                        <option value="addis-ababa">Addis Ababa</option>
+                        <option value="bahir-dar">Bahir Dar</option>
+                        <option value="hawassa">Hawassa</option>
+                    </select>
+                    <label for="to"><i class="fas fa-flag-checkered"></i> Destination City</label>
+                    </div>
+                </div>
+                </div>
+                
+                <!-- Travel Details -->
+                <div class="form-section">
+                <div class="section-header">
+                    <i class="fas fa-calendar-alt"></i>
+                    <h3>Travel Details</h3>
+                </div>
+                <div class="form-grid">
+                    <div class="form-group animated-input">
+                    <input type="date" id="date" required>
+                    <label for="date"><i class="far fa-calendar"></i> Travel Date</label>
+                    </div>
+                    
+                    <div class="form-group animated-input">
+                    <select id="passengers" required>
+                        <option value="1">1 Passenger</option>
+                        <option value="2">2 Passengers</option>
+                        <option value="3">3 Passengers</option>
+                        <option value="4+">4+ Passengers</option>
+                    </select>
+                    <label for="passengers"><i class="fas fa-users"></i> Passengers</label>
+                    </div>
+                </div>
+                </div>
+                
+                <!-- Vehicle Selection -->
+                <div class="form-section">
+                <div class="section-header">
+                    <i class="fas fa-bus"></i>
+                    <h3>Choose Your Vehicle</h3>
+                </div>
+                <div class="vehicle-options">
+                    <div class="vehicle-card">
+                    <input type="radio" id="standard-bus" name="vehicleType" value="standard-bus" checked>
+                    <label for="standard-bus">
+                        <div class="vehicle-icon">
+                        <i class="fas fa-bus"></i>
+                        </div>
+                        <div class="vehicle-info">
+                        <h4>Standard Bus</h4>
+                        <p>Comfortable seating • AC • WiFi</p>
+                        <div class="vehicle-price">From 450 ETB</div>
+                        </div>
+                    </label>
+                    </div>
+                    
+                    <div class="vehicle-card">
+                    <input type="radio" id="luxury-bus" name="vehicleType" value="luxury-bus">
+                    <label for="luxury-bus">
+                        <div class="vehicle-icon">
+                        <i class="fas fa-bus-alt"></i>
+                        </div>
+                        <div class="vehicle-info">
+                        <h4>Luxury Coach</h4>
+                        <p>Spacious seats • Entertainment • Snacks</p>
+                        <div class="vehicle-price">From 750 ETB</div>
+                        </div>
+                    </label>
+                    </div>
+                    
+                    <div class="vehicle-card">
+                    <input type="radio" id="minivan" name="vehicleType" value="minivan">
+                    <label for="minivan">
+                        <div class="vehicle-icon">
+                        <i class="fas fa-shuttle-van"></i>
+                        </div>
+                        <div class="vehicle-info">
+                        <h4>Executive Minivan</h4>
+                        <p>6-8 passengers • Quick transfers</p>
+                        <div class="vehicle-price">From 1200 ETB</div>
+                        </div>
+                    </label>
+                    </div>
+                </div>
+                </div>
+                
+                <button type="submit" class="btn btn-primary btn-booking">
+                <i class="fas fa-search"></i> Check Availability & Prices
+                </button>
+            </form>
+            </div>
+        </div>
         </section>
 
         <!-- Live Schedule Section -->
-        <section class="live-schedule">
+        <section class="live-schedule" id="schedule">
             <div class="container">
                 <h2>Popular Routes & Schedules</h2>
                 <div class="schedule-tabs">
@@ -155,7 +236,7 @@
         </section>
 
         <!-- Live Tracking Section -->
-        <section class="live-tracking">
+        <section class="live-tracking" id="tracking">
             <div class="container">
                 <div class="section-header">
                     <h2>Real-Time Vehicle Tracking</h2>
@@ -208,89 +289,172 @@
             </div>
         </section>
 
-        <!-- SMS Booking Section -->
-        <section class="sms-booking">
-            <div class="container">
-                <div class="sms-content">
-                    <div class="sms-text">
-                        <h3>No smartphone? No problem!</h3>
-                        <p>Book your ride via SMS. Text 'WINNER' to 8811 with your route and travel date.</p>
-                    </div>
-                    <div class="sms-image">
-                        <img src="https://images.unsplash.com/photo-1518133835878-5a93cc3f89e5?ixlib=rb-1.2.1&auto=format&fit=crop&w=300&q=80" alt="Mobile phone">
-                    </div>
-                </div>
-            </div>
-        </section>
-
-         <!-- Beautiful Feedback Section -->
         <section class="feedback-section">
         <div class="container">
-            <div class="section-header">
-            <h2 data-translate="Share Your Journey">Share Your Journey</h2>
-            <p class="section-subtitle" data-translate="We value your experience">We value your experience with WinnerGo</p>
+            <div class="section-intro">
+            <h2>Share Your Journey Experience</h2>
+            <p class="subtitle">Your feedback helps us improve and serve you better</p>
+            <div class="divider">
+                <span class="divider-line"></span>
+                <i class="fas fa-star divider-icon"></i>
+                <span class="divider-line"></span>
+            </div>
             </div>
             
             <div class="feedback-container">
             <!-- Feedback Form -->
-            <div class="feedback-card form-card">
-                <h3 data-translate="Tell Us What You Think">Tell Us What You Think</h3>
+            <div class="feedback-form-container">
+                <div class="form-header">
+                <div class="form-icon">
+                    <i class="fas fa-pen-fancy"></i>
+                </div>
+                <h3>Share Your Thoughts</h3>
+                </div>
+                
                 <form id="feedbackForm" class="feedback-form">
-                <div class="form-row">
-                    <div class="form-group">
-                    <label for="feedbackName" data-translate="Your Name">Your Name</label>
-                    <input type="text" id="feedbackName" placeholder=" ">
-                    <div class="input-underline"></div>
-                    </div>
-                    <div class="form-group">
-                    <label for="feedbackEmail" data-translate="Email (Optional)">Email (Optional)</label>
-                    <input type="email" id="feedbackEmail" placeholder=" ">
-                    <div class="input-underline"></div>
-                    </div>
+                <div class="form-group floating-label">
+                    <input type="text" id="feedbackName" required>
+                    <label for="feedbackName">Your Name</label>
+                    <div class="underline"></div>
+                </div>
+                
+                <div class="form-group floating-label">
+                    <input type="email" id="feedbackEmail">
+                    <label for="feedbackEmail">Email (Optional)</label>
+                    <div class="underline"></div>
                 </div>
                 
                 <div class="form-group rating-group">
-                    <label data-translate="Your Rating">Your Rating</label>
-                    <div class="rating-stars">
+                    <label>Your Rating</label>
+                    <div class="star-rating">
                     <input type="radio" id="star5" name="rating" value="5">
-                    <label for="star5" title="Excellent">★</label>
+                    <label for="star5" title="Excellent">
+                        <i class="fas fa-star"></i>
+                    </label>
                     <input type="radio" id="star4" name="rating" value="4">
-                    <label for="star4" title="Good">★</label>
+                    <label for="star4" title="Good">
+                        <i class="fas fa-star"></i>
+                    </label>
                     <input type="radio" id="star3" name="rating" value="3">
-                    <label for="star3" title="Average">★</label>
+                    <label for="star3" title="Average">
+                        <i class="fas fa-star"></i>
+                    </label>
                     <input type="radio" id="star2" name="rating" value="2">
-                    <label for="star2" title="Below Average">★</label>
+                    <label for="star2" title="Below Average">
+                        <i class="fas fa-star"></i>
+                    </label>
                     <input type="radio" id="star1" name="rating" value="1">
-                    <label for="star1" title="Poor">★</label>
-                    <div class="rating-text" id="ratingText">Tap to rate</div>
+                    <label for="star1" title="Poor">
+                        <i class="fas fa-star"></i>
+                    </label>
                     </div>
                 </div>
                 
-                <div class="form-group">
-                    <label for="feedbackComment" data-translate="Your Experience">Your Experience</label>
-                    <textarea id="feedbackComment" rows="4" placeholder="How was your journey with WinnerGo?"></textarea>
-                    <div class="textarea-underline"></div>
+                <div class="form-group floating-label">
+                    <textarea id="feedbackComment" rows="4" required></textarea>
+                    <label for="feedbackComment">Your Experience</label>
+                    <div class="underline"></div>
                 </div>
                 
-                <button type="submit" class="btn btn-primary btn-submit">
-                    <span data-translate="Submit Feedback">Submit Feedback</span>
+                <button type="submit" class="submit-btn">
+                    <span>Submit Feedback</span>
                     <i class="fas fa-paper-plane"></i>
                 </button>
                 </form>
             </div>
             
-            <!-- Feedback Display -->
-            <div class="feedback-card testimonials-card">
+            <!-- Testimonials -->
+            <div class="testimonials-container">
                 <div class="testimonials-header">
-                <h3 data-translate="Recent Traveler Experiences">Recent Traveler Experiences</h3>
+                <div class="header-icon">
+                    <i class="fas fa-comments"></i>
+                </div>
+                <h3>Traveler Experiences</h3>
                 <div class="average-rating">
-                    <span data-translate="Average Rating">Average Rating</span>
-                    <div class="stars" id="averageRating">4.8</div>
+                    <div class="stars">
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star-half-alt"></i>
+                    </div>
+                    <span>4.8 from 256 reviews</span>
                 </div>
                 </div>
                 
-                <div id="feedbackList" class="feedback-list">
-                <!-- Feedback items will be inserted here by JavaScript -->
+                <div class="testimonials-slider">
+                <div class="testimonial-card">
+                    <div class="user-info">
+                    <div class="avatar">
+                        <img src="https://randomuser.me/api/portraits/women/44.jpg" alt="User">
+                    </div>
+                    <div class="user-details">
+                        <h4>Alemitu M.</h4>
+                        <div class="rating">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        </div>
+                    </div>
+                    </div>
+                    <p class="testimonial-text">"The booking process was so easy and the driver was very professional. Will definitely use WinnerGo again for my travels!"</p>
+                    <div class="testimonial-meta">
+                    <span class="date">2 days ago</span>
+                    <span class="route">Addis Ababa → Bahir Dar</span>
+                    </div>
+                </div>
+                
+                <div class="testimonial-card">
+                    <div class="user-info">
+                    <div class="avatar">
+                        <img src="https://randomuser.me/api/portraits/men/32.jpg" alt="User">
+                    </div>
+                    <div class="user-details">
+                        <h4>Yohannes K.</h4>
+                        <div class="rating">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        </div>
+                    </div>
+                    </div>
+                    <p class="testimonial-text">"Real-time tracking gave me peace of mind knowing exactly when my family would arrive. Excellent service!"</p>
+                    <div class="testimonial-meta">
+                    <span class="date">1 week ago</span>
+                    <span class="route">Hawassa → Addis Ababa</span>
+                    </div>
+                </div>
+                
+                <div class="testimonial-card">
+                    <div class="user-info">
+                    <div class="avatar">
+                        <img src="https://randomuser.me/api/portraits/women/68.jpg" alt="User">
+                    </div>
+                    <div class="user-details">
+                        <h4>Selam W.</h4>
+                        <div class="rating">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        </div>
+                    </div>
+                    </div>
+                    <p class="testimonial-text">"I love the Telebirr payment option - so convenient! The luxury bus was comfortable and arrived right on time."</p>
+                    <div class="testimonial-meta">
+                    <span class="date">3 weeks ago</span>
+                    <span class="route">Addis Ababa → Gondar</span>
+                    </div>
+                </div>
+                </div>
+                
+                <div class="view-all-link">
+                <a href="#">View all testimonials <i class="fas fa-arrow-right"></i></a>
                 </div>
             </div>
             </div>
