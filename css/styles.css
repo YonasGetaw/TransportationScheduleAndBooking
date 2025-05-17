@@ -668,22 +668,134 @@ p {
     font-weight: 600;
 }
 
-/* Support Button */
-.support-button {
-    position: fixed;
-    bottom: 2rem;
-    right: 2rem;
-    z-index: 999;
+/* Help Button Styles */
+.help-button {
+  position: fixed;
+  bottom: 2rem;
+  right: 2rem;
+  z-index: 1000;
 }
 
-.support-button .btn {
-    border-radius: 50%;
-    width: 60px;
-    height: 60px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+.help-btn {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  background-color: var(--primary);
+  color: white;
+  border: none;
+  cursor: pointer;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.5rem;
+  transition: all 0.3s ease;
+}
+
+.help-btn:hover {
+  background-color: var(--primary-dark);
+  transform: scale(1.1);
+}
+
+.help-box {
+  position: absolute;
+  bottom: 80px;
+  right: 0;
+  width: 300px;
+  background: white;
+  border-radius: 12px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
+  padding: 1.5rem;
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(20px);
+  transition: all 0.3s ease;
+}
+
+.help-box.active {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+}
+
+.help-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1rem;
+}
+
+.help-header h3 {
+  margin: 0;
+  color: var(--primary);
+}
+
+.close-help {
+  background: none;
+  border: none;
+  font-size: 1.5rem;
+  cursor: pointer;
+  color: var(--text-light);
+  transition: color 0.2s;
+}
+
+.close-help:hover {
+  color: var(--primary);
+}
+
+.help-content ul {
+  list-style: none;
+  padding: 0;
+  margin: 1.5rem 0;
+}
+
+.help-content li {
+  padding: 0.5rem 0;
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.help-content i {
+  color: var(--primary);
+  width: 20px;
+  text-align: center;
+}
+
+.help-actions {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  margin-top: 1.5rem;
+}
+
+.help-action {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 0.75rem 1rem;
+  background: var(--background);
+  border-radius: 8px;
+  color: var(--text);
+  text-decoration: none;
+  transition: all 0.2s ease;
+}
+
+.help-action:hover {
+  background: var(--primary-light);
+  color: white;
+}
+
+.help-action i {
+  color: inherit;
+}
+
+/* Responsive Design */
+@media (max-width: 576px) {
+  .help-box {
+    width: 280px;
+    right: -20px;
+  }
 }
 
 /* Footer Styles */
