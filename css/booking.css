@@ -1,0 +1,311 @@
+/* booking.css */
+
+.booking-main {
+    padding: 3rem 0;
+    background-color: var(--background);
+}
+
+.booking-flow {
+    background-color: var(--white);
+    padding: 2.5rem;
+    border-radius: var(--border-radius);
+    box-shadow: var(--box-shadow);
+    max-width: 900px;
+    margin: 0 auto;
+}
+
+.booking-header {
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+    margin-bottom: 2rem;
+    border-bottom: 1px solid var(--gray);
+    padding-bottom: 1rem;
+}
+
+.booking-header h2 {
+    margin-bottom: 0;
+    color: var(--primary);
+}
+
+.back-button {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    color: var(--text-light);
+    font-weight: 600;
+    transition: color 0.3s ease;
+}
+
+.back-button:hover {
+    color: var(--primary);
+}
+
+/* Booking Sections (Steps) */
+.booking-section {
+    display: none; /* Hide all sections by default */
+    padding: 1.5rem 0;
+}
+
+.booking-section.active {
+    display: block; /* Show active section */
+}
+
+.booking-section h3 {
+    color: var(--primary-dark);
+    margin-bottom: 1.5rem;
+    font-size: 1.8rem;
+}
+
+/* Form Styles - Reusing main.css form-group/form-row, but adding specific adjustments */
+.booking-form .form-group {
+    margin-bottom: 1.5rem; /* More spacing for booking form fields */
+}
+
+.booking-form .form-row {
+    margin-bottom: 0; /* Remove default margin from main.css if combined with form-group */
+}
+
+.booking-form .swap-btn-container {
+    margin-bottom: 1.5rem; /* Align swap button with form-group fields */
+}
+
+/* Route selection cards */
+#availableRoutes {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 1.5rem;
+    margin-bottom: 2rem;
+}
+
+.schedule-card {
+    border: 2px solid var(--gray);
+    cursor: pointer;
+    transition: all 0.2s ease;
+    background-color: var(--white); /* Ensure background is white for selection highlight */
+    position: relative; /* For the checkmark */
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    min-height: 180px; /* Ensure cards have consistent height */
+}
+
+.schedule-card:hover {
+    border-color: var(--primary-light);
+    transform: translateY(-3px);
+}
+
+.schedule-card.selected {
+    border-color: var(--primary);
+    box-shadow: 0 0 0 4px rgba(30, 58, 138, 0.2);
+}
+
+.schedule-card.selected::after {
+    content: '\f058'; /* FontAwesome check-circle solid */
+    font-family: "Font Awesome 5 Free";
+    font-weight: 900;
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    color: var(--success);
+    font-size: 1.5rem;
+}
+
+.schedule-card .btn {
+    display: none; /* Hide the booking button on booking page cards */
+}
+
+/* No routes message */
+.no-routes-message {
+    text-align: center;
+    color: var(--text-light);
+    font-style: italic;
+    grid-column: 1 / -1; /* Span across all columns */
+}
+
+/* Passenger Details */
+#passengerDetailsInputs {
+    margin-top: 1.5rem;
+}
+
+#passengerDetailsInputs .form-group {
+    border-bottom: 1px dashed var(--gray);
+    padding-bottom: 1rem;
+    margin-bottom: 1rem;
+}
+
+#passengerDetailsInputs .form-group:last-child {
+    border-bottom: none;
+    padding-bottom: 0;
+    margin-bottom: 0;
+}
+
+
+/* Payment Options */
+.payment-options {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: 1.5rem;
+    margin-bottom: 2rem;
+}
+
+.payment-card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 1.5rem;
+    border: 2px solid var(--gray);
+    border-radius: var(--border-radius);
+    cursor: pointer;
+    transition: all 0.2s ease;
+    text-align: center;
+}
+
+.payment-card:hover {
+    border-color: var(--primary-light);
+    box-shadow: var(--box-shadow);
+}
+
+.payment-card input[type="radio"] {
+    display: none; /* Hide default radio button */
+}
+
+.payment-card input[type="radio"]:checked + img {
+    outline: 3px solid var(--primary); /* Highlight image when selected */
+    border-radius: 4px;
+}
+
+.payment-card img {
+    max-width: 80px;
+    height: auto;
+    margin-bottom: 1rem;
+    transition: all 0.2s ease;
+}
+
+/* Booking Summary */
+.booking-summary {
+    background-color: var(--background);
+    padding: 1.5rem;
+    border-radius: var(--border-radius);
+    margin-top: 2rem;
+    border: 1px solid var(--gray);
+}
+
+.booking-summary h4 {
+    margin-top: 0;
+    margin-bottom: 1rem;
+    color: var(--primary-dark);
+    border-bottom: 1px dashed var(--gray);
+    padding-bottom: 0.5rem;
+}
+
+.booking-summary p {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 0.5rem;
+    font-size: 1.1rem;
+}
+
+.booking-summary p span {
+    font-weight: 600;
+    color: var(--text);
+}
+
+.booking-summary .total-price {
+    font-size: 1.3rem;
+    font-weight: bold;
+    color: var(--primary);
+    margin-top: 1rem;
+    padding-top: 1rem;
+    border-top: 1px solid var(--gray);
+}
+
+/* Booking Navigation Buttons */
+.booking-navigation {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 2rem;
+    gap: 1rem;
+}
+
+.booking-navigation .btn {
+    flex-grow: 1; /* Allow buttons to expand */
+}
+
+/* Confirmation Message */
+.confirmation-message {
+    text-align: center;
+    padding: 3rem 1.5rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+}
+
+.confirmation-message .success-icon {
+    font-size: 4rem;
+    color: var(--success);
+    margin-bottom: 1.5rem;
+}
+
+.confirmation-message h3 {
+    color: var(--success);
+    font-size: 2.2rem;
+    margin-bottom: 1rem;
+}
+
+.booking-details-summary {
+    background-color: var(--background);
+    padding: 1.5rem;
+    border-radius: var(--border-radius);
+    margin-top: 1.5rem;
+    text-align: left;
+    width: 100%;
+    max-width: 400px;
+}
+
+.booking-details-summary p {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 0.5rem;
+}
+
+.booking-details-summary strong {
+    color: var(--primary-dark);
+}
+
+.booking-details-summary span {
+    font-weight: 600;
+}
+
+
+/* Responsive Adjustments */
+@media (max-width: 768px) {
+    .booking-flow {
+        padding: 1.5rem;
+    }
+
+    .booking-header {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .booking-form .form-row {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    .booking-form .swap-btn-container {
+        margin: 0.5rem 0; /* Adjust spacing */
+        align-self: center; /* Center swap button */
+    }
+
+    .payment-options {
+        grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+    }
+
+    .booking-navigation {
+        flex-direction: column;
+    }
+}
