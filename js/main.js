@@ -310,7 +310,7 @@ function initSupportButton() {
 function initMobileMenu() {
     const menuToggle = document.createElement('button');
     menuToggle.className = 'menu-toggle';
-    menuToggle.innerHTML = '<i class="fas fa-bars"></i>';
+    // menuToggle.innerHTML = '<i class="fas fa-bars"></i>';
     menuToggle.setAttribute('aria-label', 'Toggle menu');
 
     const header = document.querySelector('.header .container');
@@ -534,3 +534,81 @@ function initHelpButton() {
     }
   });
 }
+
+// Enhanced Booking Form JavaScript
+document.addEventListener('DOMContentLoaded', function() {
+  // Initialize form
+  const bookingForm = document.getElementById('tripForm');
+  const swapBtn = document.querySelector('.swap-btn');
+  
+  if (!bookingForm) return;
+  
+  // Set minimum date to today
+  const today = new Date().toISOString().split('T')[0];
+  document.getElementById('date').setAttribute('min', today);
+  
+  // Location swap functionality
+  swapBtn.addEventListener('click', function() {
+    const fromSelect = document.getElementById('from');
+    const toSelect = document.getElementById('to');
+    const tempValue = fromSelect.value;
+    fromSelect.value = toSelect.value;
+    toSelect.value = tempValue;
+    
+    // Trigger animation
+    this.classList.add('animate-swap');
+    setTimeout(() => {
+      this.classList.remove('animate-swap');
+    }, 300);
+  });
+  
+  // Form submission
+  bookingForm.addEventListener('submit', function(e) {
+    e.preventDefault();
+    
+    const from = document.getElementById('from').value;
+    const to = document.getElementById('to').value;
+    const date = document.getElementById('date').value;
+    const passengers = document.getElementById('passengers').value;
+    const vehicleType = document.querySelector('input[name="vehicleType"]:checked').value;
+    
+    // Validate form
+    if (!from || !to || !date || !vehicleType) {
+      showToast('Please complete all required fields', 'error');
+      return;
+    }
+    
+    if (from === to) {
+      showToast('Departure and destination cannot be the same', 'error');
+      return;
+    }
+    
+    // Process booking
+    processBooking(from, to, date, vehicleType, passengers);
+  });
+  
+  function processBooking(from, to, date, vehicleType, passengers) {
+    // Get vehicle details
+    const vehicleName = document.querySelector(`input[name="vehicleType"][value="${vehicleType}"] + label h4`).textContent;
+    const vehiclePrice = document.querySelector(`input[name="vehicleType"][value="${vehicleType}"] + label .vehicle-price`).textContent;
+    
+    // Show confirmation
+    showToast(`
+      Searching ${vehicleName} from ${getCityName(from)} 
+      to ${getCityName(to)} on ${new Date(date).toLocaleDateString()} 
+      for ${passengers} passenger(s) • ${vehiclePrice}
+    `);
+    
+    // In real app, redirect to booking page:
+    // window.location.href = `booking.html?from=${from}&to=${to}&date=${date}&vehicle=${vehicleType}&passengers=${passengers}`;
+  }
+  
+  function getCityName(cityValue) {
+    const cities = {
+      'addis-ababa': 'Addis Ababa',
+      'bahir-dar': 'Bahir Dar',
+      'hawassa': 'Hawassa'
+    };
+    return cities[cityValue] || cityValue;
+  }
+});
