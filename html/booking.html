@@ -10,8 +10,8 @@
     <header class="header">
         <div class="container">
             <div class="logo">
-                <img src="../assets/images/logo.png" alt="WinnerGo Logo">
-                <h1>WinnerGo</h1>
+                <img src="../assets/images/logo img.png" alt="WinnerGo Logo">
+                <!-- <h1>WinnerGo</h1> -->
             </div>
             <nav class="navbar">
                 <ul>
@@ -48,7 +48,7 @@
 
                 <form id="bookingForm" class="booking-form">
                     <section class="booking-section active" id="step1">
-                        <h3>1. Select Route & Date</h3>
+                        <h3>Select Route & Date</h3>
                         <div class="form-row">
                             <div class="form-group">
                                 <label for="bookingFrom">Departure City</label>
@@ -84,6 +84,51 @@
                             <label for="bookingDate">Travel Date</label>
                             <input type="date" id="bookingDate" required>
                         </div>
+                    
+                    <h3>Choose Your Vehicle Type</h3>
+          <div class="vehicle-options">
+            <div class="vehicle-card">
+              <input type="radio" id="standard-bus" name="vehicleType" value="standard-bus" checked>
+              <label for="standard-bus">
+                <div class="vehicle-icon">
+                  <i class="fas fa-bus"></i>
+                </div>
+                <div class="vehicle-info">
+                  <h4>Standard Bus</h4>
+                  <p>Comfortable seating • AC • WiFi</p>
+                  <div class="vehicle-price">From 450 ETB</div>
+                </div>
+              </label>
+            </div>
+            
+            <div class="vehicle-card">
+              <input type="radio" id="luxury-bus" name="vehicleType" value="luxury-bus">
+              <label for="luxury-bus">
+                <div class="vehicle-icon">
+                  <i class="fas fa-bus-alt"></i>
+                </div>
+                <div class="vehicle-info">
+                  <h4>Luxury Coach</h4>
+                  <p>Spacious seats • Entertainment • Snacks</p>
+                  <div class="vehicle-price">From 750 ETB</div>
+                </div>
+              </label>
+            </div>
+            
+            <div class="vehicle-card">
+              <input type="radio" id="minivan" name="vehicleType" value="minivan">
+              <label for="minivan">
+                <div class="vehicle-icon">
+                  <i class="fas fa-shuttle-van"></i>
+                </div>
+                <div class="vehicle-info">
+                  <h4>Executive Minivan</h4>
+                  <p>6-8 passengers • Quick transfers</p>
+                  <div class="vehicle-price">From 1200 ETB</div>
+                </div>
+              </label>
+            </div>
+          </div>
                         <button type="button" class="btn btn-primary next-step" data-step="2">Next: Find Routes</button>
                     </section>
 
