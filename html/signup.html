@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sign Up - EthioTransport</title>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+Ethiopic&display=swap" rel="stylesheet">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    body {
+      font-family: 'Noto Serif Ethiopic', Arial, sans-serif;
+      background-color: #F9FAFB;
+      background-image: url('../assets/images/photo_2025-05-17_22-31-30.jpg');
+      background-size: cover;
+      background-position: center;
+      background-attachment: fixed;
+      color: #111827;
+      line-height: 1.6;
+    }
+    .container {
+      max-width: 400px;
+      margin: 50px auto;
+      padding: 20px;
+      background-color: rgba(255, 255, 255, 0.9);
+      border-radius: 8px;
+    }
+    .header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 20px;
+    }
+    .header img {
+      height: 50px;
+    }
+    .header h1 {
+      font-size: 24px;
+    }
+    .header select {
+      padding: 5px;
+      border: 1px solid #6B7280;
+      border-radius: 4px;
+    }
+    form {
+      display: flex;
+      flex-direction: column;
+    }
+    label {
+      margin-bottom: 5px;
+    }
+    input {
+      padding: 10px;
+      margin-bottom: 15px;
+      border: 1px solid #6B7280;
+      border-radius: 4px;
+    }
+    button {
+      background-color: #1E3A8A;
+      color: #FFFFFF;
+      border: none;
+      padding: 10px;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+    button:hover {
+      background-color: #152D64;
+    }
+    p {
+      text-align: center;
+      margin-top: 10px;
+    }
+    a {
+      color: #1E3A8A;
+      text-decoration: none;
+    }
+    a:hover {
+      text-decoration: underline;
+    }
+    @media (max-width: 480px) {
+      .container {
+        margin: 20px auto;
+        padding: 10px;
+      }
+      .header h1 {
+        font-size: 20px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="header">
+      <img src="../assets/images/logo img1.png" alt="EthioTransport Logo">
+      <h1 id="title">Sign Up</h1>
+      <select id="language" onchange="changeLanguage()">
+        <option value="en">English</option>
+        <option value="am">አማርኛ</option>
+      </select>
+    </div>
+    <form id="signup-form">
+      <label id="name-label">Name:</label>
+      <input type="text" id="name" required>
+      <label id="email-label">Email (optional):</label>
+      <input type="email" id="email">
+      <label id="phone-label">Phone Number:</label>
+      <input type="tel" id="phone" required>
+      <label id="password-label">Password:</label>
+      <input type="password" id="password" required>
+      <button type="button" id="submit-btn" onclick="signup()">Sign Up</button>
+    </form>
+    <p id="login-link">Already have an account? <a href="login.html">Login</a></p>
+  </div>
+  <script>
+    const translations = {
+      en: {
+        title: 'Sign Up',
+        nameLabel: 'Name',
+        emailLabel: 'Email (optional)',
+        phoneLabel: 'Phone Number',
+        passwordLabel: 'Password',
+        submitBtn: 'Sign Up',
+        loginLink: 'Already have an account? '
+      },
+      am: {
+        title: 'ተመዝገብ',
+        nameLabel: 'ስም',
+        emailLabel: 'ኢሜል (አማራጭ)',
+        phoneLabel: 'የስልክ ቁጥር',
+        passwordLabel: 'የይለፍ ቃል',
+        submitBtn: 'ተመዝገብ',
+        loginLink: 'መለያ አለህ? '
+      }
+    };
+    let currentLang = 'en';
+    function changeLanguage() {
+      currentLang = document.getElementById('language').value;
+      document.getElementById('title').textContent = translations[currentLang].title;
+      document.getElementById('name-label').textContent = translations[currentLang].nameLabel;
+      document.getElementById('email-label').textContent = translations[currentLang].emailLabel;
+      document.getElementById('phone-label').textContent = translations[currentLang].phoneLabel;
+      document.getElementById('password-label').textContent = translations[currentLang].passwordLabel;
+      document.getElementById('submit-btn').textContent = translations[currentLang].submitBtn;
+      document.getElementById('login-link').innerHTML = translations[currentLang].loginLink + '<a href="login.html">Login</a>';
+    }
+    function signup() {
+      const name = document.getElementById('name').value;
+      const email = document.getElementById('email').value;
+      const phone = document.getElementById('phone').value;
+      const password = document.getElementById('password').value;
+      if (name && phone && password) {
+        let users = JSON.parse(localStorage.getItem('users')) || [];
+        users.push({ name, email, phone, password });
+        localStorage.setItem('users', JSON.stringify(users));
+        alert('Sign up successful! Please login.');
+        window.location.href = 'login.html';
+      } else {
+        alert('Please fill all required fields (Name, Phone Number, Password).');
+      }
+    }
+    changeLanguage();
+  </script>
+</body>
+</html>

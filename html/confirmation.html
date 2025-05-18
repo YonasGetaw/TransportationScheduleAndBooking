@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Booking Confirmation | Transportation Service</title>
+    <link rel="stylesheet" href="../css/styles.css">
+    <link rel="stylesheet" href="../css/confirmation.css">
+    <script src="../js/confirmation.js" defer></script>
+</head>
+<body>
+    <header class="confirmation-header">
+        <div class="logo-container">
+            <img src="../assets/images/logo.png" alt="Transportation Booking Logo" class="logo">
+        </div>
+        <h1>Booking Confirmed!</h1>
+    </header>
+
+    <main class="confirmation-container">
+        <section class="confirmation-summary">
+            <div class="confirmation-badge">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
+                    <path fill-rule="evenodd" d="M2.25 12c0-5.385 4.365-9.75 9.75-9.75s9.75 4.365 9.75 9.75-4.365 9.75-9.75 9.75S2.25 17.385 2.25 12zm13.36-1.814a.75.75 0 10-1.22-.872l-3.236 4.53L9.53 12.22a.75.75 0 00-1.06 1.06l2.25 2.25a.75.75 0 001.14-.094l3.75-5.25z" clip-rule="evenodd" />
+                </svg>
+            </div>
+
+            <div class="booking-reference">
+                <h2>Booking Reference</h2>
+                <p id="bookingRef">TRX-5A8D2F9E</p>
+            </div>
+
+            <div class="booking-details">
+                <h2>Your Journey Details</h2>
+                <div class="detail-grid">
+                    <div class="detail-item">
+                        <span class="detail-label">Service Type:</span>
+                        <span id="serviceType" class="detail-value">Express Bus</span>
+                    </div>
+                    <div class="detail-item">
+                        <span class="detail-label">Departure:</span>
+                        <span id="departureLocation" class="detail-value">Addis Ababa</span>
+                        <span id="departureTime" class="detail-value">May 20, 2024 - 08:30 AM</span>
+                    </div>
+                    <div class="detail-item">
+                        <span class="detail-label">Arrival:</span>
+                        <span id="arrivalLocation" class="detail-value">Bahir Dar</span>
+                        <span id="arrivalTime" class="detail-value">May 20, 2024 - 02:45 PM</span>
+                    </div>
+                    <div class="detail-item">
+                        <span class="detail-label">Passengers:</span>
+                        <span id="passengerCount" class="detail-value">2 Adults</span>
+                    </div>
+                    <div class="detail-item">
+                        <span class="detail-label">Total Cost:</span>
+                        <span id="totalCost" class="detail-value">ETB 1,250.00</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="itinerary-details">
+            <h2>Your Itinerary</h2>
+            <ul id="itineraryList">
+                <li>08:00 AM - Check-in at Addis Ababa Main Terminal</li>
+                <li>08:30 AM - Departure from Addis Ababa</li>
+                <li>10:30 AM - Rest stop at Debre Markos</li>
+                <li>02:45 PM - Arrival at Bahir Dar Terminal</li>
+            </ul>
+        </section>
+
+        <section class="passenger-details">
+            <h2>Passenger Information</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Name</th>
+                        <th>Seat</th>
+                        <th>Ticket Type</th>
+                    </tr>
+                </thead>
+                <tbody id="passengerTable">
+                    <tr>
+                        <td>Mikias Amare</td>
+                        <td>12A</td>
+                        <td>Adult</td>
+                    </tr>
+                    <tr>
+                        <td>Selamawit Tesfaye</td>
+                        <td>12B</td>
+                        <td>Adult</td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+
+        <section class="thank-you-message">
+            <p>Thank you for booking with us! Your reservation is now confirmed.</p>
+            <p>A confirmation email has been sent to your registered email address.</p>
+        </section>
+
+        <section class="support-section">
+            <h2>Need Help?</h2>
+            <p>For any inquiries or support, please contact us:</p>
+            <ul class="contact-info">
+                <li>Phone: +251 123 456 789</li>
+                <li>Email: support@transportbooking.com</li>
+                <li>Office Hours: 8:00 AM - 6:00 PM (Monday to Saturday)</li>
+            </ul>
+        </section>
+
+        <div class="action-buttons">
+            <button id="downloadReceipt" class="btn-primary">Download Receipt</button>
+            <a href="../html/index.html" class="btn-neutral">Back to Home</a>
+        </div>
+    </main>
+
+    <footer class="confirmation-footer">
+        <p>© 2024 Transportation Booking Service. All rights reserved.</p>
+    </footer>
+</body>
+</html>
