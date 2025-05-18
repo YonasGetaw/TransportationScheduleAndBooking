@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WinnerGo - Book Your Ride</title>
+    <link rel="stylesheet" href="../css/styles.css"> <link rel="stylesheet" href="../css/booking.css"> <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+    <header class="header">
+        <div class="container">
+            <div class="logo">
+                <img src="../assets/images/logo img.png" alt="WinnerGo Logo">
+                <!-- <h1>WinnerGo</h1> -->
+            </div>
+            <nav class="navbar">
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="#" class="active">Book Now</a></li>
+                    <li><a href="index.html#schedule">Schedules</a></li>
+                    <li><a href="index.html#schedule">Track Ride</a></li>
+                    <li><a href="about.html">About Us</a></li>
+                </ul>
+            </nav>
+            <div class="header-right">
+                <div class="language-switcher">
+                    <span class="current-lang">English</span>
+                    <div class="lang-dropdown">
+                        <a href="#" data-lang="am">Amharic</a>
+                        <a href="#" data-lang="en">English</a>
+                    </div>
+                </div>
+                <div class="auth-buttons">
+                    <a href="login.html" class="btn btn-outline">Login</a>
+                    <a href="signup.html" class="btn btn-primary">Operator Portal</a>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <main class="booking-main">
+        <div class="container">
+            <div class="booking-flow">
+                <div class="booking-header">
+                    <a href="index.html" class="back-button"><i class="fas fa-arrow-left"></i> Back to Home</a>
+                    <h2>Book Your Transportation</h2>
+                </div>
+
+                <form id="bookingForm" class="booking-form">
+                    <section class="booking-section active" id="step1">
+                        <h3>Select Route & Date</h3>
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="bookingFrom">Departure City</label>
+                                <select id="bookingFrom" required>
+                                    <option value="">Select departure city</option>
+                                    <option value="addis-ababa">Addis Ababa</option>
+                                    <option value="bahir-dar">Bahir Dar</option>
+                                    <option value="hawassa">Hawassa</option>
+                                    <option value="gondar">Gondar</option>
+                                    <option value="mekele">Mekele</option>
+                                    <option value="dire-dawa">Dire Dawa</option>
+                                </select>
+                            </div>
+                            <div class="swap-btn-container">
+                                <button type="button" class="swap-btn" title="Swap locations">
+                                    <i class="fas fa-exchange-alt"></i>
+                                </button>
+                            </div>
+                            <div class="form-group">
+                                <label for="bookingTo">Destination City</label>
+                                <select id="bookingTo" required>
+                                    <option value="">Select destination city</option>
+                                    <option value="addis-ababa">Addis Ababa</option>
+                                    <option value="bahir-dar">Bahir Dar</option>
+                                    <option value="hawassa">Hawassa</option>
+                                    <option value="gondar">Gondar</option>
+                                    <option value="mekele">Mekele</option>
+                                    <option value="dire-dawa">Dire Dawa</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="bookingDate">Travel Date</label>
+                            <input type="date" id="bookingDate" required>
+                        </div>
+                    
+                    <h3>Choose Your Vehicle Type</h3>
+          <div class="vehicle-options">
+            <div class="vehicle-card">
+              <input type="radio" id="standard-bus" name="vehicleType" value="standard-bus" checked>
+              <label for="standard-bus">
+                <div class="vehicle-icon">
+                  <i class="fas fa-bus"></i>
+                </div>
+                <div class="vehicle-info">
+                  <h4>Standard Bus</h4>
+                  <p>Comfortable seating • AC • WiFi</p>
+                  <div class="vehicle-price">From 450 ETB</div>
+                </div>
+              </label>
+            </div>
+            
+            <div class="vehicle-card">
+              <input type="radio" id="luxury-bus" name="vehicleType" value="luxury-bus">
+              <label for="luxury-bus">
+                <div class="vehicle-icon">
+                  <i class="fas fa-bus-alt"></i>
+                </div>
+                <div class="vehicle-info">
+                  <h4>Luxury Coach</h4>
+                  <p>Spacious seats • Entertainment • Snacks</p>
+                  <div class="vehicle-price">From 750 ETB</div>
+                </div>
+              </label>
+            </div>
+            
+            <div class="vehicle-card">
+              <input type="radio" id="minivan" name="vehicleType" value="minivan">
+              <label for="minivan">
+                <div class="vehicle-icon">
+                  <i class="fas fa-shuttle-van"></i>
+                </div>
+                <div class="vehicle-info">
+                  <h4>Executive Minivan</h4>
+                  <p>6-8 passengers • Quick transfers</p>
+                  <div class="vehicle-price">From 1200 ETB</div>
+                </div>
+              </label>
+            </div>
+          </div>
+                        <button type="button" class="btn btn-primary next-step" data-step="2">Next: Find Routes</button>
+                    </section>
+
+                    <section class="booking-section" id="step2">
+                        <h3>2. Choose Your Ride</h3>
+                        <div id="availableRoutes" class="schedule-cards">
+                            <p class="no-routes-message">No routes found for your selection. Please adjust your search.</p>
+                        </div>
+                        <div class="booking-navigation">
+                            <button type="button" class="btn btn-outline prev-step" data-step="1">Back</button>
+                            <button type="button" class="btn btn-primary next-step" data-step="3" disabled id="selectRouteBtn">Next: Passenger Details</button>
+                        </div>
+                    </section>
+
+                    <section class="booking-section" id="step3">
+                        <h3>3. Passenger Details</h3>
+                        <div class="form-group">
+                            <label for="numPassengers">Number of Passengers</label>
+                            <input type="number" id="numPassengers" value="1" min="1" max="10" required>
+                        </div>
+                        <div id="passengerDetailsInputs">
+                            </div>
+                        <div class="booking-navigation">
+                            <button type="button" class="btn btn-outline prev-step" data-step="2">Back</button>
+                            <button type="button" class="btn btn-primary next-step" data-step="4">Next: Payment</button>
+                        </div>
+                    </section>
+
+                    <section class="booking-section" id="step4">
+                        <h3>4. Payment Method</h3>
+                        <div class="payment-options">
+                            <label class="payment-card">
+                                <input type="radio" name="paymentMethod" value="telebirr" required>
+                                <img src="../assets/images/telebirr.png" alt="Telebirr">
+                                <span>Telebirr</span>
+                            </label>
+                            <label class="payment-card">
+                                <input type="radio" name="paymentMethod" value="amole">
+                                <img src="../assets/images/amole.png" alt="Amole">
+                                <span>Amole</span>
+                            </label>
+                            <label class="payment-card">
+                                <input type="radio" name="paymentMethod" value="cbebirr">
+                                <img src="../assets/images/cbebirr.png" alt="CBE Birr">
+                                <span>CBE Birr</span>
+                            </label>
+                            <label class="payment-card">
+                                <input type="radio" name="paymentMethod" value="cash">
+                                <img src="../assets/images/cash.png" alt="Cash">
+                                <span>Cash at Partner</span>
+                            </label>
+                        </div>
+                        <div class="booking-summary">
+                            <h4>Order Summary</h4>
+                            <p>Route: <span id="summaryRoute"></span></p>
+                            <p>Date: <span id="summaryDate"></span></p>
+                            <p>Departure: <span id="summaryDeparture"></span></p>
+                            <p>Passengers: <span id="summaryPassengers"></span></p>
+                            <p class="total-price">Total: <span id="summaryTotal">0 ETB</span></p>
+                        </div>
+                        <div class="booking-navigation">
+                            <button type="button" class="btn btn-outline prev-step" data-step="3">Back</button>
+                            <button type="submit" class="btn btn-primary">Confirm Booking</button>
+                        </div>
+                    </section>
+
+                    <section class="booking-section" id="step5">
+                        <div class="confirmation-message">
+                            <i class="fas fa-check-circle success-icon"></i>
+                            <h3>Booking Confirmed!</h3>
+                            <p>Your ride has been successfully booked. A confirmation SMS and email with your ticket details will be sent shortly.</p>
+                            <div class="booking-details-summary">
+                                <p><strong>Booking ID:</strong> <span id="confirmedBookingId"></span></p>
+                                <p><strong>Route:</strong> <span id="confirmedRoute"></span></p>
+                                <p><strong>Date:</strong> <span id="confirmedDate"></span></p>
+                                <p><strong>Departure:</strong> <span id="confirmedDeparture"></span></p>
+                                <p><strong>Total Paid:</strong> <span id="confirmedTotal"></span></p>
+                            </div>
+                            <a href="index.html" class="btn btn-primary btn-large">Back to Home</a>
+                            <a href="#" class="btn btn-outline btn-large">Track My Ride</a>
+                        </div>
+                    </section>
+                </form>
+            </div>
+        </div>
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-col">
+                    <h3>WinnerGo</h3>
+                    <p>Your winning choice for reliable transportation across Ethiopia.</p>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-facebook"></i></a>
+                        <a href="#"><i class="fab fa-telegram"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                    </div>
+                </div>
+                <div class="footer-col">
+                    <h3>Quick Links</h3>
+                    <ul>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="#">Book a Ride</a></li>
+                        <li><a href="#">Schedules</a></li>
+                        <li><a href="#">Track Ride</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h3>Company</h3>
+                    <ul>
+                        <li><a href="#">About Us</a></li>
+                        <li><a href="#">Privacy Policy</a></li>
+                        <li><a href="#">Become a Partner</a></li>
+                        <li><a href="#">Careers</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h3>Contact Us</h3>
+                    <ul>
+                        <li><i class="fas fa-map-marker-alt"></i> Bole Road, Addis Ababa</li>
+                        <li><i class="fas fa-phone"></i> +251 911 234 567</li>
+                        <li><i class="fas fa-envelope"></i> support@winnergo.com</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 WinnerGo. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="../js/main.js"></script>
+    <script src="../js/booking.js"></script>
+</body>
+</html>
