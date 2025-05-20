@@ -1,0 +1,344 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign Up - EthioTransport</title>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+Ethiopic&display=swap" rel="stylesheet">
+    <link rel="apple-touch-icon" sizes="180x180" href="./assets/images/favicon_io/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="./assets/images/favicon_io/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="./assets/images/favicon_io/favicon-16x16.png">
+    <link rel="manifest" href="./assets/images/favicon_io/site.webmanifest">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: 'Noto Serif Ethiopic', Arial, sans-serif;
+            background-color: #F9FAFB;
+            background-image: url('./assets/sign.png');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            color: #111827;
+            line-height: 1.6;
+        }
+        .container {
+            max-width: 600px;
+            margin: 50px auto;
+            padding: 40px;
+            background-color: rgba(255, 255, 255, 0.7);
+            border-radius: 12px;
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15);
+        }
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 30px;
+        }
+        .header img {
+            height: 70px;
+        }
+        .header h1 {
+            font-size: 32px;
+            color: #1E3A8A;
+            margin-left: 20px;
+        }
+        .header select {
+            padding: 10px;
+            border: 1px solid #6B7280;
+            border-radius: 6px;
+            font-size: 16px;
+            background-color: white;
+        }
+        form {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 20px;
+        }
+        .form-group {
+            display: flex;
+            flex-direction: column;
+        }
+        .form-group label {
+            margin-bottom: 8px;
+            font-size: 17px;
+            font-weight: bold;
+            color: #374151;
+        }
+        .form-group input {
+            padding: 12px;
+            border: 1px solid #D1D5DB;
+            border-radius: 6px;
+            font-size: 18px;
+            background-color: #F3F4F6;
+        }
+        .form-group input:focus {
+            border-color: #1E3A8A;
+            outline: none;
+            box-shadow: 0 0 0 0.1rem rgba(30, 58, 138, 0.25);
+        }
+        .full-width {
+            grid-column: 1 / -1;
+        }
+        button {
+            background-color: #1E3A8A;
+            color: #FFFFFF;
+            border: none;
+            padding: 15px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 20px;
+            font-weight: bold;
+            transition: background-color 0.3s ease;
+            grid-column: 1 / -1;
+            margin-top: 25px;
+        }
+        button:hover {
+            background-color: #152D64;
+        }
+        p {
+            text-align: center;
+            margin-top: 30px;
+            font-size: 18px;
+            color: #4B5563;
+        }
+        p a {
+            font-size: 20px;
+            font-weight: bold;
+            color: #1E3A8A;
+            text-decoration: none;
+        }
+        a:hover {
+            text-decoration: underline;
+        }
+        .error-message {
+            color: #DC2626;
+            font-size: 16px;
+            margin-top: 5px;
+            grid-column: 1 / -1;
+        }
+        .toast-container {
+            position: fixed;
+            top: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: 1000;
+        }
+        .toast {
+            background-color: #4CAF50;
+            color: white;
+            padding: 15px 25px;
+            border-radius: 8px;
+            margin-bottom: 10px;
+            opacity: 0;
+            animation: fadeOut 3s forwards;
+        }
+        .toast.error {
+            background-color: #F44336;
+        }
+
+        @keyframes fadeOut {
+            0% { opacity: 1; }
+            90% { opacity: 1; }
+            100% { opacity: 0; }
+        }
+
+        @media (max-width: 600px) {
+            form {
+                grid-template-columns: 1fr;
+            }
+            .form-group {
+                grid-column: 1 / -1;
+            }
+        }
+        @media (max-width: 480px) {
+            .container {
+                padding: 30px;
+                margin: 30px auto;
+            }
+            .header h1 {
+                font-size: 28px;
+                margin-left: 10px;
+            }
+            .header img {
+                height: 60px;
+            }
+            .header select {
+                padding: 8px;
+                font-size: 14px;
+            }
+            .form-group label {
+                font-size: 16px;
+            }
+            .form-group input {
+                padding: 10px;
+                font-size: 17px;
+            }
+            button {
+                font-size: 18px;
+                padding: 12px;
+            }
+            p {
+                font-size: 16px;
+                margin-top: 20px;
+            }
+            p a {
+                font-size: 18px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <img src="./assets/images/logo img1.png" alt="EthioTransport Logo">
+            <h1 id="title">Sign Up</h1>
+            <select id="language" onchange="changeLanguage()">
+                <option value="en">English</option>
+                <option value="am">አማርኛ</option>
+            </select>
+        </div>
+        <form id="signup-form">
+            <div class="form-group">
+                <label id="first-name-label">First Name:</label>
+                <input type="text" id="firstName" required>
+            </div>
+            <div class="form-group">
+                <label id="last-name-label">Last Name:</label>
+                <input type="text" id="lastName" required>
+            </div>
+            <div class="form-group full-width">
+                <label id="phone-label">Phone Number:</label>
+                <input type="tel" id="phone" required>
+            </div>
+            <div class="form-group">
+                <label id="password-label">Password:</label>
+                <input type="password" id="password" required>
+            </div>
+            <div class="form-group">
+                <label id="confirm-password-label">Confirm Password:</label>
+                <input type="password" id="confirm-password" required>
+            </div>
+            <div id="password-error" class="error-message"></div>
+            <button type="button" id="submit-btn" onclick="signup()">Sign Up</button>
+        </form>
+        <p id="login-link" class="full-width">Already have an account? <a href="login.html">Login</a></p>
+    </div>
+    <div id="toast-container" class="toast-container"></div>
+    <script>
+        const translations = {
+            en: {
+                title: 'Sign Up',
+                firstNameLabel: 'First Name',
+                lastNameLabel: 'Last Name',
+                phoneLabel: 'Phone Number',
+                passwordLabel: 'Password',
+                confirmPasswordLabel: 'Confirm Password',
+                submitBtn: 'Sign Up',
+                loginLink: 'Already have an account? ',
+                passwordMismatch: 'Passwords do not match.',
+                requiredFields: 'Please fill all required fields.',
+                signupSuccess: 'Sign up successful! Redirecting to login...',
+                invalidPhone: 'Invalid phone number format. Use 09, 07, +2519, or +2517 followed by 8 digits.',
+                phoneAlreadyRegistered: 'Phone number already registered.'
+            },
+            am: {
+                title: 'ተመዝገብ',
+                firstNameLabel: 'የመጀመሪያ ስም',
+                lastNameLabel: 'የአባት ስም',
+                phoneLabel: 'የስልክ ቁጥር',
+                passwordLabel: 'የይለፍ ቃል',
+                confirmPasswordLabel: 'የይለፍ ቃል አረጋግጥ',
+                submitBtn: 'ተመዝገብ',
+                loginLink: 'መለያ አለህ? ',
+                passwordMismatch: 'የይለፍ ቃሎች አይዛመዱም።',
+                requiredFields: 'እባክዎ ሁሉንም አስፈላጊ መስኮች ይሙሉ.',
+                signupSuccess: 'ምዝገባው ተጠናቋል! ወደ መግቢያ ገጽ በመዞር ላይ...',
+                invalidPhone: 'የስልክ ቁጥር ፋሪም የማይቀር ነው። 09፣ 07፣ +2519 ወይም +2517 በኋላው 8 ቁጥሮችን ይጠቀሙ።',
+                phoneAlreadyRegistered: 'ይህ የስልክ ቁጥር አስቀድሞ ተመዝግቧል።'
+            }
+        };
+
+        let currentLang = 'en';
+
+        function changeLanguage() {
+            currentLang = document.getElementById('language').value;
+            document.getElementById('title').textContent = translations[currentLang].title;
+            document.getElementById('first-name-label').textContent = translations[currentLang].firstNameLabel;
+            document.getElementById('last-name-label').textContent = translations[currentLang].lastNameLabel;
+            document.getElementById('phone-label').textContent = translations[currentLang].phoneLabel;
+            document.getElementById('password-label').textContent = translations[currentLang].passwordLabel;
+            document.getElementById('confirm-password-label').textContent = translations[currentLang].confirmPasswordLabel;
+            document.getElementById('submit-btn').textContent = translations[currentLang].submitBtn;
+            document.getElementById('login-link').innerHTML = translations[currentLang].loginLink + '<a href="login.html">Login</a>';
+            document.getElementById('password-error').textContent = ''; // Clear any previous error message
+        }
+
+        function showToast(message, type = 'success') {
+            const toastContainer = document.getElementById('toast-container');
+            const toast = document.createElement('div');
+            toast.classList.add('toast');
+            toast.textContent = message;
+            if (type === 'error') {
+                toast.classList.add('error');
+            }
+            toastContainer.appendChild(toast);
+            setTimeout(() => {
+                toast.remove();
+            }, 3000); // Remove toast after 3 seconds
+        }
+
+        function signup() {
+            const firstName = document.getElementById('firstName').value;
+            const lastName = document.getElementById('lastName').value;
+            const phone = document.getElementById('phone').value;
+            const password = document.getElementById('password').value;
+            const confirmPassword = document.getElementById('confirm-password').value;
+            const passwordError = document.getElementById('password-error');
+
+            // Check if all fields are filled
+            if (!firstName || !lastName || !phone || !password || !confirmPassword) {
+                showToast(translations[currentLang].requiredFields, 'error');
+                return;
+            }
+
+            // Validate phone number format (09, 07, +2519, +2517 followed by 8 digits)
+            const phonePattern = /^\+251[79]\d{8}$|^0[79]\d{8}$/;
+            if (!phonePattern.test(phone)) {
+                showToast(translations[currentLang].invalidPhone, 'error');
+                return;
+            }
+
+            // Check if passwords match
+            if (password !== confirmPassword) {
+                passwordError.textContent = translations[currentLang].passwordMismatch;
+                return;
+            } else {
+                passwordError.textContent = ''; // Clear error if passwords match
+            }
+
+            // Check for existing user
+            let users = JSON.parse(localStorage.getItem('users')) || [];
+            const existingUser = users.find(user => user.phone === phone);
+            if (existingUser) {
+                showToast(translations[currentLang].phoneAlreadyRegistered, 'error');
+                return;
+            }
+
+            // Add new user
+            users.push({ firstName, lastName, phone, password });
+            localStorage.setItem('users', JSON.stringify(users));
+            showToast(translations[currentLang].signupSuccess);
+            setTimeout(() => {
+                window.location.href = 'login.html';
+            }, 2000); // Redirect after 2 seconds
+        }
+
+        changeLanguage();
+    </script>
+</body>
+</html>

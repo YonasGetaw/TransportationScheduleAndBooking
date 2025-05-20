@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login - WinnerGo</title>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+Ethiopic&display=swap" rel="stylesheet">
+    <link rel="apple-touch-icon" sizes="180x180" href="./assets/images/favicon_io/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="./assets/images/favicon_io/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="./assets/images/favicon_io/favicon-16x16.png">
+    <link rel="manifest" href="./assets/images/favicon_io/site.webmanifest">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: 'Noto Serif Ethiopic', Arial, sans-serif;
+            background-color: #F9FAFB;
+            background-image: url(''); /* Removed background image as requested */
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            color: #111827;
+            line-height: 1.6;
+        }
+        .container {
+            max-width: 480px; /* Increased max-width */
+            margin: 80px auto; /* Adjusted margin */
+            padding: 40px; /* Increased padding */
+            background-color: rgba(255, 255, 255, 0.6); /* Decreased transparency */
+            border-radius: 12px;
+            box-shadow: 0 6px 10px rgba(0, 0, 0, 0.15);
+        }
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 30px;
+        }
+        .header img {
+            height: 60px; /* Increased logo size */
+        }
+        .header h1 {
+            font-size: 28px; /* Increased title size */
+            color: #1E3A8A;
+        }
+        .header select {
+            padding: 8px; /* Increased padding */
+            border: 1px solid #6B7280;
+            border-radius: 6px;
+            background-color: white;
+            font-size: 16px;
+        }
+        form {
+            display: flex;
+            flex-direction: column;
+        }
+        label {
+            margin-bottom: 8px;
+            font-weight: 600;
+            color: #1E3A8A;
+            font-size: 17px;
+        }
+        input {
+            padding: 12px;
+            margin-bottom: 20px;
+            border: 1px solid #6B7280;
+            border-radius: 6px;
+            font-size: 18px;
+            background-color: rgba(255, 255, 255, 0.8); /* Slightly less transparent input background */
+        }
+        button {
+            background-color: #1E3A8A;
+            color: #FFFFFF;
+            border: none;
+            padding: 15px;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 18px;
+            font-weight: 600;
+            transition: background-color 0.3s ease;
+        }
+        button:hover {
+            background-color: #152D64;
+        }
+        p {
+            text-align: center;
+            margin-top: 20px;
+            color: #4B5563;
+            font-size: 16px;
+        }
+        p a {
+            color: #1E3A8A;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 17px; /* Slightly increased signup link size */
+        }
+        a:hover {
+            text-decoration: underline;
+        }
+        .toast-container {
+            position: fixed;
+            top: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: 1000;
+        }
+        .toast {
+            background-color: #4CAF50; /* Success color */
+            color: white;
+            padding: 15px 25px;
+            border-radius: 8px;
+            margin-bottom: 10px;
+            opacity: 0;
+            animation: fadeOut 3s forwards;
+        }
+        .toast.error {
+            background-color: #F44336; /* Error color */
+        }
+        .toast.info {
+            background-color: #2196F3; /* Info color */
+        }
+
+        @keyframes fadeOut {
+            0% { opacity: 1; }
+            90% { opacity: 1; }
+            100% { opacity: 0; }
+        }
+
+        @media (max-width: 480px) {
+            .container {
+                margin: 30px auto;
+                padding: 25px;
+            }
+            .header h1 {
+                font-size: 24px;
+            }
+            .header img {
+                height: 45px;
+            }
+            input, button, select, label, p, p a {
+                font-size: 16px;
+                padding: 10px;
+                margin-bottom: 15px;
+            }
+            button {
+                padding: 12px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <img src="./assets/images/logo img1.png" alt="WinnerGo Logo">
+            <h1 id="title">Login</h1>
+            <select id="language" onchange="changeLanguage()">
+                <option value="en">English</option>
+                <option value="am">አማርኛ</option>
+            </select>
+        </div>
+        <form id="login-form">
+            <label id="phone-label">Phone Number:</label>
+            <input type="tel" id="phone" required placeholder="0912345678">
+            <label id="password-label">Password:</label>
+            <input type="password" id="password" required placeholder="••••••••">
+            <button type="button" id="submit-btn" onclick="login()">Login</button>
+        </form>
+        <p id="signup-link">Don't have an account? <a href="signup.html">Sign Up</a></p>
+    </div>
+    <div id="toast-container" class="toast-container"></div>
+    <script>
+        const translations = {
+            en: {
+                title: 'Login',
+                phoneLabel: 'Phone Number',
+                passwordLabel: 'Password',
+                submitBtn: 'Login',
+                signupLink: "Don't have an account? ",
+                loginSuccess: 'Login successful! Redirecting...',
+                loginFailed: 'Invalid phone number or password.',
+                requiredFields: 'Please fill in all fields.',
+                invalidPhone: 'Invalid phone number format. Use 09, 07, +2519, or +2517 followed by 8 digits.'
+            },
+            am: {
+                title: 'መግቢያ',
+                phoneLabel: 'የስልክ ቁጥር',
+                passwordLabel: 'የይለፍ ቃል',
+                submitBtn: 'ግባ',
+                signupLink: 'መለያ የለህም? ',
+                loginSuccess: 'በተሳካ ሁኔታ ገብተዋል! በመዞር ላይ...',
+                loginFailed: 'ልክ ያልሆነ ስልክ ቁጥር ወይም የይለፍ ቃል.',
+                requiredFields: 'እባክዎ ሁሉንም መስኮች ይሙሉ.',
+                invalidPhone: 'የስልክ ቁጥር ፋሪም የማይቀር ነው። 09፣ 07፣ +2519 ወይም +2517 በኋላው 8 ቁጥሮችን ይጠቀሙ።'
+            }
+        };
+
+        let currentLang = 'en';
+        const toastContainer = document.getElementById('toast-container');
+
+        function changeLanguage() {
+            currentLang = document.getElementById('language').value;
+            document.getElementById('title').textContent = translations[currentLang].title;
+            document.getElementById('phone-label').textContent = translations[currentLang].phoneLabel;
+            document.getElementById('password-label').textContent = translations[currentLang].passwordLabel;
+            document.getElementById('submit-btn').textContent = translations[currentLang].submitBtn;
+            document.getElementById('signup-link').innerHTML = translations[currentLang].signupLink + '<a href="signup.html">Sign Up</a>';
+        }
+
+        function showToast(message, type = 'info') {
+            const toast = document.createElement('div');
+            toast.classList.add('toast');
+            if (type) toast.classList.add(type);
+            toast.textContent = message;
+            toastContainer.appendChild(toast);
+            setTimeout(() => toast.remove(), 3000); // Remove toast after 3 seconds
+        }
+
+        function login() {
+            const phone = document.getElementById('phone').value;
+            const password = document.getElementById('password').value;
+
+            // Check if all fields are filled
+            if (!phone || !password) {
+                showToast(translations[currentLang].requiredFields, 'error');
+                return;
+            }
+
+            // Validate phone number format (09, 07, +2519, +2517 followed by 8 digits)
+            const phonePattern = /^\+251[79]\d{8}$|^0[79]\d{8}$/;
+            if (!phonePattern.test(phone)) {
+                showToast(translations[currentLang].invalidPhone, 'error');
+                return;
+            }
+
+            // Validate credentials
+            const users = JSON.parse(localStorage.getItem('users')) || [];
+            const user = users.find(u => u.phone === phone && u.password === password);
+
+            if (user) {
+                localStorage.setItem('isLoggedIn', 'true');
+                localStorage.setItem('currentUser', JSON.stringify(user));
+                showToast(translations[currentLang].loginSuccess, 'success');
+
+                const urlParams = new URLSearchParams(window.location.search);
+                const returnUrl = urlParams.get('return');
+
+                setTimeout(() => {
+                    if (returnUrl) {
+                        window.location.href = returnUrl;
+                    } else {
+                        window.location.href = 'index.html';
+                    }
+                }, 1500); // Redirect after 1.5 seconds
+            } else {
+                showToast(translations[currentLang].loginFailed, 'error');
+            }
+        }
+
+        // Initialize the page
+        changeLanguage();
+
+        // Check if there's a redirect message in localStorage (set by booking page)
+        const redirectMessage = localStorage.getItem('redirectMessage');
+        if (redirectMessage) {
+            showToast(redirectMessage, 'info');
+            localStorage.removeItem('redirectMessage');
+        }
+    </script>
+</body>
+</html>
